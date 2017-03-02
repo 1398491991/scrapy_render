@@ -2,6 +2,6 @@
 
 __version__ = (0,0,1)
 
-version = ','.join(__version__)
+version = ','.join(map(str,__version__))
 
 from RenderRequest import RenderRequest,Render

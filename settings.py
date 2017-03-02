@@ -44,7 +44,7 @@ RENDER_URLS = ['http://localhost:8000/doload',
 
 RENDER_TIME = 5000
 
-RENDER_PROXYS = []
+RENDER_PROXYS = [] # 格式:http|https|socket://user:passwd@host:port
 
 RENDER_USE_COOKIE = 0
 
