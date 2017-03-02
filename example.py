@@ -2,7 +2,7 @@
 import scrapy
 from RenderRequest import RenderRequest,Render
 
-class TySpider(scrapy.Spider):
+class ExampleSpider(scrapy.Spider):
     name = "example"
 
     start_urls = ('http://example.com',)
