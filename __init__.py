@@ -1,7 +1,7 @@
 #coding = utf-8
 
-__version__ = (0,0,1)
+__version__ = (0,0,2)
 
-version = ','.join(map(str,__version__))
+version = '.'.join(map(str,__version__))
 
 from RenderRequest import RenderRequest,Render

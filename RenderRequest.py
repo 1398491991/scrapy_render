@@ -3,6 +3,10 @@ import scrapy
 from six.moves.urllib.parse import urljoin, urlencode
 from scrapy.utils.python import to_bytes, is_listlike
 
+class RenderContentTypeError(Exception):
+    pass
+
+
 
 def _urlencode(seq, enc):
     values = [(to_bytes(k, enc), to_bytes(v, enc))
@@ -18,6 +22,8 @@ class Render(object):
         self.render_time = str(render_time)
         self.proxy = proxy
         self.use_cookie = str(use_cookie)
+        if content_type not in ['img','pdf','html']:
+            raise RenderContentTypeError,"allow <img,pdf,html>"
         self.content_type = content_type
         self.script = script
         self.user_agent = user_agent
@@ -31,6 +37,7 @@ class RenderRequest(scrapy.Request):
 
         super(RenderRequest, self).__init__(*args, **kwargs)
         self.method = 'POST'
+        self.not_exist_render_url = False
         if self.params:
             items = self.params.items() if isinstance(self.params, dict) else self.params
             querystr = _urlencode(items, self.encoding)

@@ -24,17 +24,31 @@ RENDER_USER_AGENTS = [
     "Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52",
 ]
 
+
 DOWNLOADER_MIDDLEWARES = {
-   'scrapy_render.RenderMiddleware.RenderUrl': 800,
-   'scrapy_render.RenderMiddleware.RenderTime': 801,
-   'scrapy_render.RenderMiddleware.RenderProxy': 802,
+   'scrapy_render.RenderRedisMiddleware.RenderRedisUrl': 800,
+   'scrapy_render.RenderRedisMiddleware.RenderRedisTime': 801,
+   'scrapy_render.RenderRedisMiddleware.RenderRedisProxy': 802,
    'scrapy_render.RenderMiddleware.RenderPostParam': 803,
-   'scrapy_render.RenderMiddleware.RenderUseCookie': 804,
+   'scrapy_render.RenderRedisMiddleware.RenderRedisUseCookie': 804,
    'scrapy_render.RenderMiddleware.RenderContentType': 805,
    'scrapy_render.RenderMiddleware.RenderScript': 806,
    'scrapy_render.RenderMiddleware.RenderUserAgent': 807,
-   'scrapy_render.RenderMiddleware.RenderBody': 808,
+   'scrapy_render.RenderRedisMiddleware.RenderRedisBody': 808,
+
+   # or
+
+   # 'scrapy_render.RenderMiddleware.RenderUrl': 800,
+   # 'scrapy_render.RenderMiddleware.RenderTime': 801,
+   # 'scrapy_render.RenderMiddleware.RenderProxy': 802,
+   # 'scrapy_render.RenderMiddleware.RenderPostParam': 803,
+   # 'scrapy_render.RenderMiddleware.RenderUseCookie': 804,
+   # 'scrapy_render.RenderMiddleware.RenderContentType': 805,
+   # 'scrapy_render.RenderMiddleware.RenderScript': 806,
+   # 'scrapy_render.RenderMiddleware.RenderUserAgent': 807,
+   # 'scrapy_render.RenderMiddleware.RenderBody': 808,
 }
+
 
 RENDER_URLS = ['http://localhost:8000/doload',
                'http://localhost:8001/doload',
@@ -42,9 +56,17 @@ RENDER_URLS = ['http://localhost:8000/doload',
                'http://localhost:8003/doload',
                ]
 
-RENDER_TIME = 5000
-
-RENDER_PROXYS = [] # 格式:http|https|socket://user:passwd@host:port
-
 RENDER_USE_COOKIE = 0
+RENDER_TIME = 5000
+RENDER_PROXYS = []
+
+# redis
+
+RENDER_REDIS_URLS_KEY = 'scrapy_render:render_redis_urls'
+REDIS_CONN_CONFIG = {}
+RENDER_REDIS_TIME = 5000
+RENDER_REDIS_TIME_KEY = 'scrapy_render:render_redis_time'
+RENDER_REDIS_PROXYS_KEY = 'scrapy_render:render_redis_proxys'
+RENDER_REDIS_USE_COOKIE_KEY = 'scrapy_render:render_redis_use_cookie'
+RENDER_REDIS_USE_COOKIE = 0
 
